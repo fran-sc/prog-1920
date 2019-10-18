@@ -1,4 +1,4 @@
-//: u02/basicos/E3.java
+//: E3.java
 package u02.basicos;
 
 import java.util.Scanner;
