@@ -1,9 +1,9 @@
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import static org.junit.Assert.assertEquals;
-import org.unit.Test;
+import org.junit.*;
 
-class CifrasTest {
+public class CifrasTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
@@ -23,14 +23,14 @@ class CifrasTest {
 
     @Test
     public void eval_getCifras_sin_numeros() {
-        String dsata = "hola\nqué tal?\nbien FIN 55\n66";
+        String data = "holaqué tal?bien FIN 55";
         int cifras = Cifras.getCifras(data);
         assertEquals(-1, cifras);
     }
 
     @Test
     public void eval_getCifras_con_numeros() {
-        String dsata = "hola 55\nqué 99tal?\nbien FIN 55\n66";
+        String data = "hola 55qué 99tal?bien FIN 55";
         int cifras = Cifras.getCifras(data);
         assertEquals(2, cifras);        
         assertEquals("El número mayor de los encontrados es: 99", outContent);        
