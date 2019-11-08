@@ -25,14 +25,31 @@ public class CifrasTest {
     public void eval_getCifras_sin_numeros() {
         String data = "holaqué tal?bien FIN 55";
         int cifras = Cifras.getCifras(data);
-        assertEquals(-1, cifras);
+        try {
+            assertEquals(0, cifras);
+            restoreStreams();
+            System.out.println("test1: OK");
+        }
+        catch(AssertionError e) {
+            restoreStreams();
+            System.out.println("test1: failed!");
+        }
     }
 
     @Test
     public void eval_getCifras_con_numeros() {
         String data = "hola 55qué 99tal?bien FIN 55";
         int cifras = Cifras.getCifras(data);
-        assertEquals(2, cifras);        
-        assertEquals("El número mayor de los encontrados es: 99", outContent);        
+        try{
+            assertEquals(2, cifras);        
+            assertEquals("55\n99\nEl número mayor de los encontrados es: 99\n", 
+                                                                outContent.toString()); 
+            restoreStreams();                   
+            System.out.println("test2: OK");                                             
+        }
+        catch(AssertionError e) {
+            restoreStreams();
+            System.out.println("test2: failed!");
+        }       
     }    
 }

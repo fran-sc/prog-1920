@@ -32,7 +32,7 @@ public class Cifras {
             }
         }
         // muestra el mayor
-        if(max>-1)
+        if(max>0)
             System.out.println("El número mayor de los encontrados es: " + max);
 
         return cont;
