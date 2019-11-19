@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Ada {
+public class C3 {
     public static void main(String[] args) {
         int n=-1, p=-1, j;
         long faul;
