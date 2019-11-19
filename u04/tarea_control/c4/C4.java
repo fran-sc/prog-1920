@@ -3,7 +3,8 @@ import java.util.Scanner;
 public class C4 {
     public static void main(String[] args) {
         Scanner cin = new Scanner(System.in);
-        for(int i=0; i<Integer.valueOf(cin.nextLine()); i++)
+        int n = Integer.valueOf(cin.nextLine());
+        for(int i=0; i<n; i++)
             System.out.println(procesaEntrada(cin.nextLine(), cin.nextLine()));
     }
 

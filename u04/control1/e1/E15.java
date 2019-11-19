@@ -1,5 +1,5 @@
 //: u04/control1/e1/E15.java
-package u04.control1.e1;
+//package u04.control1.e1;
 
 import java.util.Scanner;
 
@@ -10,16 +10,16 @@ import java.util.Scanner;
 class E15 {
     public static void main(String[] args) {
         final String LETRAS = "TRWAGMYFPDXBNJZSQVHLCKE";
-        int dni;
+        String dni;
         Scanner sc = new Scanner(System.in);
         
         System.out.print("DNI: ");
-        dni = sc.nextInt();
+        dni = sc.nextLine().trim();
 
-        if(dni<10000000 || dni>99999999)
+        if(dni.length()!=8)
             System.out.println("El número de DNI no es válido");
         else {
-            char letra = LETRAS.charAt(dni%23);
+            char letra = LETRAS.charAt(Integer.valueOf(dni)%23);
             System.out.println("La letra es '" + letra + "'");
         }
     }
