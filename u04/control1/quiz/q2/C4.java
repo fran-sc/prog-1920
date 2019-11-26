@@ -16,18 +16,17 @@ public class C4 {
 
     public static void main(String[] args) {
         Scanner cin = new Scanner(System.in);
+        String res = "";
+
         int n = cin.nextInt();
 
         if(n<1)
-                System.out.println("Número no válido");
-        else {
-            boolean primero = true;
+                res = "Número no válido,";
+        else 
             for(int i=1; i<=n; i++)
-                if(esPrimo(i)==1) {
-                    if(!primero) System.out.print(",");
-                    else primero=false;
-                    System.out.print(i);
-                }
-        }
+                if(esPrimo(i)==1) 
+                    res += i + ",";
+        
+        System.out.println(res.substring(0, res.length()-1));
     }        
 }
