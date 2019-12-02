@@ -1,5 +1,5 @@
 public class Fibonacci {
-    public static void showSerie(int n) {
+    public static void getSerie(int n) {
         final int MAX_COLS = 4;
         long ant1 = 1, ant2 = 1, val;
         int cont = 0;
