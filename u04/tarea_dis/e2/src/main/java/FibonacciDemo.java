@@ -8,7 +8,7 @@ public class FibonacciDemo {
         int n = cin.nextInt();
 
         if(n>=0) 
-            Fibonacci.showSerie(n);
+            Fibonacci.getSerie(n);
         else
             System.out.println("Valor no válido");
         
