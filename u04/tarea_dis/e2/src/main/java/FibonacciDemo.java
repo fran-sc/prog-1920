@@ -11,5 +11,7 @@ public class FibonacciDemo {
             Fibonacci.showSerie(n);
         else
             System.out.println("Valor no válido");
+        
+        System.out.println();
     }
 }
