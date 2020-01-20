@@ -3,7 +3,7 @@ package juegos.sieteymedia;
 import juegos.recursos.Carta;
 
 class Jugador {
-    private static final int DEF_CREDITO = 100;
+    private static final int DEF_CREDITO = 1000;
     private static final int MAX_CARTAS = 15;
 
     private String nombre;
@@ -11,11 +11,12 @@ class Jugador {
     private Carta[] cartas;
     private int numCartas = 0;
 
-    Jugador(String nombre) { this(nombre, DEF_CREDITO); }
+    Jugador(String nombre) { this(nombre, Jugador.DEF_CREDITO); }
 
     Jugador(String nombre, int credito) { 
         this.nombre = nombre; 
         this.credito = credito;
+        this.cartas = new Carta[Jugador.MAX_CARTAS];
     }
     
     public String getNombre() { return this.nombre; }
