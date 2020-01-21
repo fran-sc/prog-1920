@@ -49,7 +49,7 @@ class GameController {
 
         int dif = gc.player.getCredito() - Jugador.DEF_CREDITO;
         if(dif>=0)
-            System.out.println("\nEnhorabuena,  " + gc.player.getNombre() + "! Has ganado " +                           gc.player.getCredito() + " créditos");
+            System.out.println("\nEnhorabuena, " + gc.player.getNombre() + "! Has ganado " +                           gc.player.getCredito() + " créditos");
         else
             System.out.println("\nLo siento " + gc.player.getNombre() + ". Has perdido " +
                                 (-1)*dif + " créditos.\nMejor suerte la próxima vez");
@@ -61,7 +61,7 @@ class GameController {
         for(Carta c: cartas)
             System.out.print(c + " ");
         
-        System.out.println("\nValor jugada: " + valToString(this.valorJugada(cartas)));
+        System.out.println("\nPuntuación de la jugada: " + valToString(this.valorJugada(cartas)));
         
         System.out.println("\nTu apuesta total en la jugada es de: " + apuesta + 
                             " créditos");
@@ -92,7 +92,6 @@ class GameController {
         System.out.println("- Ganas si obtienes una jugada de valor superior a la mía");
         System.out.println("- En caso de empate, gano yo");
         System.out.println("- En caso de que uno de los dos saque 7 y media, se pagará el doble");
-        System.out.println("- En caso de quedarte sin crédito, el juego finalizará");
         System.out.println("\nTu crédito actual es de: " + this.player.getCredito() + " créditos");
         System.out.println("\nEmpecemos!!!");
     }
@@ -198,7 +197,7 @@ class GameController {
                 bancaVal += (val>7)?0.5:val;
                 System.out.print(c + " ");
             }
-            System.out.println("\nValor jugada: " + valToString(bancaVal));
+            System.out.println("\nPuntuación de la  jugada: " + valToString(bancaVal));
             
             if(bancaVal==GameController.JUGADA_MAX) {
                 System.out.println("\n----> Wow!! Siete y media! Yo gano!");
