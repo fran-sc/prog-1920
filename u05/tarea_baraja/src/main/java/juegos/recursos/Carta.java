@@ -17,5 +17,12 @@ public class Carta {
     public int getValor() { return this.valor; }
     public Palo getPalo() { return this.palo; }
     
-    public String toString() { return "[" + this.palo + ": " + this.valor + "]"; }
+    public String toString() { 
+        char c;
+        if(this.valor == 10) c = 'S';
+        else if(this.valor == 11) c = 'C';
+        else if(this.valor == 12) c = 'R';
+        else c = String.valueOf(this.valor).charAt(0);
+        return "[" + this.palo + ": " + c + "]"; 
+    }
 }

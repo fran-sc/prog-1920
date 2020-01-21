@@ -3,7 +3,7 @@ package juegos.sieteymedia;
 import juegos.recursos.Carta;
 
 class Jugador {
-    private static final int DEF_CREDITO = 1000;
+    protected static final int DEF_CREDITO = 1000;
     private static final int MAX_CARTAS = 15;
 
     private String nombre;

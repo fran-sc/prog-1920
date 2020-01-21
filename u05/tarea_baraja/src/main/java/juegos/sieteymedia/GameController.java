@@ -1,6 +1,8 @@
 package juegos.sieteymedia;
 
 import juegos.recursos.*;
+
+import java.io.IOException;
 import java.util.Scanner;
 
 class GameController {
@@ -12,16 +14,17 @@ class GameController {
 
     public static void main(String[] args) {
         boolean juego = true, finJugada, nueva_carta;;
-
+        int totalApuesta;
         Scanner cin = new Scanner(System.in);
 
         GameController gc = new GameController();
         gc.iniciaComponentes();
 
-        int totalApuesta=0;
         while(juego) {
-            finJugada = false;
             gc.player.reiniciaMano();
+            totalApuesta = 0;
+            finJugada = false;
+            gc.baraja.reinicia();
 
             while(!finJugada) {
                 nueva_carta = (gc.player.getNumCartas()==0)?true:false;
@@ -43,6 +46,13 @@ class GameController {
             
             juego = gc.checkContinuarJuego();           
         }
+
+        int dif = gc.player.getCredito() - Jugador.DEF_CREDITO;
+        if(dif>=0)
+            System.out.println("\nEnhorabuena,  " + gc.player.getNombre() + "! Has ganado " +                           gc.player.getCredito() + " créditos");
+        else
+            System.out.println("\nLo siento " + gc.player.getNombre() + ". Has perdido " +
+                                (-1)*dif + " créditos.\nMejor suerte la próxima vez");
     }
 
     private void muestraJugada(int apuesta) {
@@ -51,7 +61,7 @@ class GameController {
         for(Carta c: cartas)
             System.out.print(c + " ");
         
-        System.out.println("\nValor jugada: " + this.valorJugada(cartas));
+        System.out.println("\nValor jugada: " + valToString(this.valorJugada(cartas)));
         
         System.out.println("\nTu apuesta total en la jugada es de: " + apuesta + 
                             " créditos");
@@ -64,7 +74,7 @@ class GameController {
         this.baraja = new Baraja(); 
 
         // Player
-        System.out.println("\nCuál es tu nombre? ");
+        System.out.print("\nCómo te llamas? ");
         this.player = new Jugador(cin.nextLine().trim());
 
         System.out.println("\nBienvenido, " + this.player.getNombre() + ". Vamos a jugar!");
@@ -84,7 +94,7 @@ class GameController {
         System.out.println("- En caso de que uno de los dos saque 7 y media, se pagará el doble");
         System.out.println("- En caso de quedarte sin crédito, el juego finalizará");
         System.out.println("\nTu crédito actual es de: " + this.player.getCredito() + " créditos");
-        System.out.println("\nEmpecemos!!!\n");
+        System.out.println("\nEmpecemos!!!");
     }
 
     private double valorJugada(Carta[] cartas) {
@@ -162,12 +172,14 @@ class GameController {
     }
 
     private void juegaMano(int apuesta) {
+        Scanner cin = new Scanner(System.in);
+
         muestraJugada(apuesta);
 
         double playerVal = this.valorJugada(this.player.getCartas());
 
         if(playerVal>GameController.JUGADA_MAX) {
-            System.out.println("Ohhh!!! Te pasaste. Yo gano!");
+            System.out.println("\n----> Ohhh!!! Te pasaste. Yo gano!");
             apuesta *= -1;
         }
         else {
@@ -176,31 +188,44 @@ class GameController {
             if(playerVal==GameController.JUGADA_MAX) 
                 System.out.println("\nWow!! Siete y media!");
             
-            System.out.println("\nVoy a sacar mis cartas...");
+            System.out.println("\nVoy a sacar mis cartas...\n");
+            System.err.println("Pulsa [RET] para continuar...");
+            cin.nextLine();
+
             while(bancaVal<playerVal && bancaVal<GameController.JUGADA_MAX) {
                 Carta c = this.baraja.daCartas(1)[0];
                 int val = c.getValor();
                 bancaVal += (val>7)?0.5:val;
                 System.out.print(c + " ");
             }
-            System.out.println("\nValor jugada: " + bancaVal);
+            System.out.println("\nValor jugada: " + valToString(bancaVal));
             
             if(bancaVal==GameController.JUGADA_MAX) {
-                System.out.println("\nWow!! Siete y media! Yo gano!");
+                System.out.println("\n----> Wow!! Siete y media! Yo gano!");
                 apuesta *= -2;
             }
             else if(bancaVal>GameController.JUGADA_MAX) {
-                System.out.println("Tú ganas!!");
+                System.out.println("\n----> Me pasé! Tú ganas!!");
                 if(playerVal==GameController.JUGADA_MAX)
                     apuesta *= 2;
             }
             else {
-                System.out.println("Ohhh!!! Yo gano!");
+                System.out.println("\n----> Ohhh!!! Yo gano!");
                 apuesta *= -1;
             }
         }
         
         this.player.actualizaCredito(apuesta);
-        System.out.println("Tu crédito ahora es de: " + this.player.getCredito() + " créditos");
+        System.out.println("\nTu crédito ahora es de: " + this.player.getCredito() + " créditos");
+    }
+
+    private String valToString(double val) {
+        String s = "";
+
+        if(val>=1.0) s += (int)val;
+
+        if((val-(int)val)>0) s += ((s.length()>0)?" y ":"") + "media";
+
+        return s;
     }
 }

@@ -21,7 +21,7 @@ public class Baraja {
         int i=0;
         for(Palo palo:Palo.values()) {
             for(int j=Carta.MIN_VAL; j<=Carta.MAX_VAL; j++) {
-                if(j!=7 && j!=8) cartas[i++] = new Carta(palo, j);
+                if(j<=7 || j>=10) cartas[i++] = new Carta(palo, j);
             }
         }               
         
