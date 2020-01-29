@@ -20,29 +20,34 @@ public class R501d {
 
         int i, j, njd, nja, jd[], ja[];
 
+        // Mientras haya oleadas...
         while(data[NO]-->0) {
+            // Jugadas de la defensa
             njd = (data[TD]<=data[DD])?data[TD]:data[DD];
-            nja = (data[TA]<=data[DA])?data[TA]:data[DA];
-            
             jd = new int[njd];
+            
+            // Jugadas del ataque
+            nja = (data[TA]<=data[DA])?data[TA]:data[DA];
             ja = new int[nja];
 
-            // tiradas defensa
+            // Tiradas defensa
             for(i=0; i<njd; i++) jd[i] = cin.nextInt();
 
-            // tiradas ataque
+            // Tiradas ataque
             for(i=0; i<nja; i++) ja[i] = cin.nextInt();
 
-            // eval jugadas
+            // Evaluar las jugadas
+            // 1. Ordenar
             Arrays.sort(jd);
             Arrays.sort(ja);
-
-            for(i=njd-1, j=nja-1; i>=0&&j>=0; i--, j--) 
+            // 2. Emparejar (de mayor a menor)
+            for(i=njd-1, j=nja-1; i>=0 && j>=0; i--, j--) 
                 if(ja[j]>jd[i]) data[TD]--;
                 else data[TA]--;
-
+            /*
             njd = (data[TD]<=data[DD])?data[TD]:data[DD];
             nja = (data[TA]<=data[DA])?data[TA]:data[DA];
+            */
         }
         System.out.println(data[TD] + " " + data[TA]);
     }
