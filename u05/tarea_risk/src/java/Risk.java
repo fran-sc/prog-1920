@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.Arrays;
 
-public class R501d {
+public class Risk {
     private final static int TD = 0;    // Tropas defensa
     private final static int TA = 1;    // Tropas ataque
     private final static int DD = 2;    // Dados defensa

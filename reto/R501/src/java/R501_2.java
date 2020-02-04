@@ -41,9 +41,6 @@ public class R501_2 {
                 for(i=njd-1, j=nja-1; i>=0&&j>=0; i--, j--) 
                     if(ja[j]>jd[i]) data[TD]--;
                     else data[TA]--;
-
-                njd = (data[TD]<=data[DD])?data[TD]:data[DD];
-                nja = (data[TA]<=data[DA])?data[TA]:data[DA];
             }
             System.out.println(data[TD] + " " + data[TA]);
         }
