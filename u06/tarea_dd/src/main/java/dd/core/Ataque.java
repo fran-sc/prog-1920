@@ -1,5 +1,5 @@
 package dd.core;
 
 public interface Ataque {
-    lanzaAtaque(Personaje enemigo);
+    int lanzaAtaque(Personaje enemigo);
 }
