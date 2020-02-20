@@ -1,4 +1,4 @@
-import paqxpress.core;
+package paqxpress.core;
 
 public class EstadoOrdenado implements EstadoPq {
     public void avanza(Paquete pq) {

@@ -11,4 +11,5 @@ public class Cliente {
 
     public String getId() { return this.id; }
     public String getNombre() { return this.nombre; }
+    public String toString() { return "[" + this.id + ": " + this.nombre + "]"; }
 }

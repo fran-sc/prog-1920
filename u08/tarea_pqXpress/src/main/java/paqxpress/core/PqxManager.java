@@ -31,9 +31,9 @@ public class PqxManager {
     public Paquete[] listaPaquetesEnReparto() {
         ArrayList<Paquete> lista = new ArrayList<Paquete>();
         for(Paquete pq: paquetes.values()) 
-            if(pq.getEstado() instanceof(EstadoEnReparto))
+            if(pq.getEstado() instanceof EstadoEnReparto)
                 lista.add(pq);
-        return pq;
+        return lista.toArray(new Paquete[lista.size()]);
     }
 
     public Paquete[] listaPaquetesPorCliente(String id) {
@@ -41,6 +41,6 @@ public class PqxManager {
         for(Paquete pq: paquetes.values()) 
             if(pq.getCliente().getNombre().equals(id))
                 lista.add(pq);
-        return pq;
+        return lista.toArray(new Paquete[lista.size()]);
     }    
 }

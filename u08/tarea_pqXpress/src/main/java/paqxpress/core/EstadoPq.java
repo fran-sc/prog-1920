@@ -1,6 +1,6 @@
-import paqxpress.core;
+package paqxpress.core;
 
 public interface EstadoPq {
-    void void avanza(Paquete pq);
-    void String informaEstado();
+    void avanza(Paquete pq);
+    String informaEstado();
 }

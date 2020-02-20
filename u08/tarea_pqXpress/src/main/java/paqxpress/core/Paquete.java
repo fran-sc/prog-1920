@@ -1,4 +1,4 @@
-import paqxpress.core;
+package paqxpress.core;
 
 public class Paquete {
     private static int _id = 1000;
@@ -19,7 +19,8 @@ public class Paquete {
     public int getId() { return this.id; }
 
     public EstadoPq getEstado() { return this.estado; }
-    
+    public void setEstado(EstadoPq estado) { this.estado = estado; }
+
     public void cambiaEstado() { this.estado.avanza(this); }
 
     public String informaEstado() { return this.estado.informaEstado(); }
