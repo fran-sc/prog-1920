@@ -6,6 +6,6 @@ public class EstadoEnviado implements EstadoPq {
     }
 
     public String informaEstado() {
-        return "Paquete enviado";
+        return "Paquete enviado al destinatario";
     }
 }

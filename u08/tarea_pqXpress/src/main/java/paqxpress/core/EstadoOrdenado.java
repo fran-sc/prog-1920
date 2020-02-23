@@ -6,6 +6,6 @@ public class EstadoOrdenado implements EstadoPq {
     }
 
     public String informaEstado() {
-        return "Paquete ordenado pero aún no ha sido recogido";
+        return "Envío ordenado pero el paquete aún no ha sido recogido";
     }
 }

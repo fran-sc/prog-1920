@@ -6,6 +6,6 @@ public class EstadoEnProceso implements EstadoPq {
     }
 
     public String informaEstado() {
-        return "Paquete recogido en proceso de envío";
+        return "Paquete recogido y en proceso de envío";
     }
 }
