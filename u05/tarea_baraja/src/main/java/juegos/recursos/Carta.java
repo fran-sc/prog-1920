@@ -18,11 +18,22 @@ public class Carta {
     public Palo getPalo() { return this.palo; }
     
     public String toString() { 
-        char c;
-        if(this.valor == 10) c = 'S';
-        else if(this.valor == 11) c = 'C';
-        else if(this.valor == 12) c = 'R';
-        else c = String.valueOf(this.valor).charAt(0);
-        return "[" + this.palo + ": " + c + "]"; 
+        String s = "";
+
+        switch(this.valor) {
+            case 10:
+                s = "S";
+                break;
+            case 11:
+                s = "C";
+                break;
+            case 12:
+                s = "R";
+                break;
+            default:
+                s = String.valueOf(this.valor);
+        }
+
+        return "[" + this.palo + ": " + s + "]"; 
     }
 }
