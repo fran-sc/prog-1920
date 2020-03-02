@@ -1,6 +1,9 @@
-Te encuentras en la entrada principal de la antigua pirámide. 
-A pesar de los siglos de abandono y olvido, sigue conservando su grandiosidad
-Al sur de la estancia se encuentra la entrada principal al recinto. 
+Te encuentras en la entrada principal de un antiguo templo, 80 km al norte de Siem Reap...
+Oculto entre la espesura de la selva, sinuosas raíces y tallos trepadores pugnan por abrirse camino 
+entre sus ancianas paredes...
+Aún después de siglos de abandono y olvido, conserva toda su grandeza y majestuosidad
+Rápido! No hay tiempo que perder! El templo podría venirse abajo en cualquier momento!
+Recuerda! Al sur de la estancia donde te encuentras, se haya la salida del recinto sagrado.
 
 Ante ti se abre una enorme estancia. Algún mobiliario, desvencijado por el implacable paso del tiempo pero que aún conserva restos de su cromado original, languidece contra las paredes.
 Puñados de monedas, cálices y vasijas de bronce se entremezclan con la madera carcomida.
@@ -15,7 +18,7 @@ Oyes un ruido a tu espalda!
 Al atravesar la puerta, accionaste el mecanismo que ciega el corredor por el que llegaste...
 Toneladas de piedra y arena, bloquean ahora la entrada...
 Maldices tu suerte, al tiempo que la luz de tu linterna comienza a desvanecerse también...
-Estas acabado... y lo sabes!
+Estás acabado... y lo sabes!
 
 Vaya! La linterna ha vuelto a fallar!
 A oscuras, consigues prender una antorcha improvisada... 
@@ -23,4 +26,7 @@ A través de la vacilante luz, vislumbras un sinfín de monedas y estatuillas de
 Lo has conseguido! Es la Cámara del Tesoro!
 Rápido! La pirámide está a punto de derrumbarse... Hazte con lo que puedas y sal de aquí!
 
+Has salido al exterior de la pirámide...
+Apenas segundos antes de que se desmorone!
+Con el tiempo, el espesor de la jungla borrará para siempre su recuerdo y sus tesoros aún ocultos...
 

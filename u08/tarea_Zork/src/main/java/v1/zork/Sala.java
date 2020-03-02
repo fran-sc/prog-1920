@@ -9,10 +9,13 @@ public abstract class Sala {
         puertas = new Sala[4];
     }
 
-    public Salas[] getPuertas() { return this.puertas; }
-    
     public String getDescripcion() { return this.descripcion; }
 
+    public Sala getSalaEnDir(Dir dir) { return this.puertas[dir.id]; }
+    
+    public Salas[] getPuertas() { return this.puertas; }
+    
     public void setPuerta(Dir dir, Sala sala) { this.puertas[dir.id] = sala; }
 
-    public Sala boolean avanza(Dir dir) { return puertas[dir.id]; }
+    public abstract boolean entra(Jugador player);
+}
