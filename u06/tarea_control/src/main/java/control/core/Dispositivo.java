@@ -1,4 +1,4 @@
-package control;
+package control.core;
 
 public class Dispositivo {
     private int releId;
@@ -16,7 +16,7 @@ public class Dispositivo {
             estado = true;
         }
         else
-            System.out.println("El dispositivo " + this.nombre + " (relé: " + this.releId + ") ya estába activado");
+            System.out.println("El dispositivo " + this.nombre + " (relé: " + this.releId + ") ya estaba activado");
     }
 
     public void off() {
@@ -25,7 +25,7 @@ public class Dispositivo {
             estado = false;
         }
         else
-            System.out.println("El dispositivo " + this.nombre + " (relé: " + this.releId + ") ya estába desactivado");        
+            System.out.println("El dispositivo " + this.nombre + " (relé: " + this.releId + ") ya estaba desactivado");        
     } 
     
     public String toString() { return "[" + this.releId + ": " + this.nombre + "]"; }

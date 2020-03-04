@@ -1,4 +1,4 @@
-package control;
+package control.core;
 
 public abstract class Comando implements IComm {
     private Dispositivo dispositivo;

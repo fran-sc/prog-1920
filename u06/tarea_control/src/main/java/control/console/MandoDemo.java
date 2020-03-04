@@ -1,4 +1,6 @@
-package control;
+package control.console;
+
+import control.core.*;
 
 public class MandoDemo {
     public static void main(String[] args) {

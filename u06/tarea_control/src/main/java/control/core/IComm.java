@@ -1,4 +1,4 @@
-package control;
+package control.core;
 
 public interface IComm {
     void execute();

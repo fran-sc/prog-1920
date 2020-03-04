@@ -1,4 +1,4 @@
-package control;
+package control.core;
 
 public class ComandoOn extends Comando {
     public ComandoOn(Dispositivo dispositivo) {
