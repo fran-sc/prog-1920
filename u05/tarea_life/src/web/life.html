@@ -1,27 +1,24 @@
 <!DOCTYPE html>
 <html>
     <body>
-        <br/>
-
-        <div style="font-family: courier; font-size: 12px;border:1px solid #d3d3d3; width: 496px; height: 20px; background-color:aliceblue">
-            Filas> <input type="text" maxlength="2" size="2" value="20" id="rows"/>
-            Columnas> <input type="text" maxlength="2" size="2" value="20" id="cols"/>
-            Células> <input type="text" size="2" value="50" id="ncells"/>
-            Semilla> <input type="text" size="2" value="" id="seed"/>
+        <img src="header.png">
+        <div style="font-family: courier; font-size: 12px;border:1px solid #d3d3d3; width: 400px; height: 20px; text-align: center; background-color:aliceblue">
+            Filas> <input type="text" maxlength="2" size="2" value="10" id="txtRows"/>
+            Columnas> <input type="text" maxlength="2" size="2" value="10" id="txtCols"/>
+            Células> <input type="text" size="2" value="25" id="txtNCells"/>
             <input type="button" id="btnReset" value="Reset>>"/>
         </div>                
         <div style="width: 498px; height: 5px;"></div>
-        <div style="font-family: courier; font-size: 12px;border:1px solid #d3d3d3; width: 147px; height: 20px; background-color:bisque">
-            <input type="button" id="btnGen" value="NGen>>"/>        
-            Gen> <input type="text" size="2" value="1" id="ngen" disabled/>
-        </div>
-
-        <br/>
-        
         <canvas id="canvas" width="400px" height="400px" style="border:1px solid #d3d3d3">
             Your browser does not support the HTML5 canvas tag.
         </canvas>
-        
+        <div style="width: 498px; height: 5px;"></div>
+        <div style="font-family: courier; font-size: 12px;border:1px solid #d3d3d3; width: 400px; height: 20px; background-color:bisque">
+            <input type="button" id="btnGen" value="NGen>>"/>        
+            Gen> <input type="text" size="2" value="1" id="txtGen" disabled/>
+            Alive> <input type="text" size="2" value="20" id="txtAlive" disabled/>
+            Grid <input type="checkbox" id="chkGrid" checked/>
+        </div>        
         <script src="life.js"></script> 
     </body>
 </html>

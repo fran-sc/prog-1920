@@ -87,9 +87,6 @@ public class LifeGame {
         boolean[][] clone = new boolean[this.rows][this.cols]; // matriz para las copias
 
         while(ngen-->0) {
-            for(int i=0; i<this.rows; i++) 
-                clone[i] = Arrays.copyOf(this.matrix[i], this.cols);
-
             int ncells = 0; // número de células tras la evolución
             for(int i=0; i<this.rows; i++) 
                 for(int j=0; j<this.cols; j++) 
