@@ -8,7 +8,6 @@ import java.util.Arrays;
  * Versión con Doble Buffer
  */
 public class LifeGameDB {
-    private boolean[][][] buffer = new boolean[2][][];
     private boolean[][] currentBuffer;
     private boolean[][] nextBuffer;
     private int rows;
@@ -48,10 +47,8 @@ public class LifeGameDB {
         this.cols = cols;
         
         // Crea los dos buffers e inicializa los punteros
-        this.buffer[0] = new boolean[this.rows][this.cols];
-        this.buffer[1] = new boolean[this.rows][this.cols];
-        this.currentBuffer = buffer[0];
-        this.nextBuffer = buffer[1];
+        this.currentBuffer = new boolean[this.rows][this.cols];
+        this.nextBuffer = new boolean[this.rows][this.cols];
     }
 
     /**

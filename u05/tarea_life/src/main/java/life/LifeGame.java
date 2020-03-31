@@ -32,7 +32,7 @@ public class LifeGame {
             for(int j=0; j<this.cols; j++) 
                 if(data[i][j]==1) { 
                     this.matrix[i][j] = true;
-                    ncells++;
+                    this.ncells++;
                 }
     }
 

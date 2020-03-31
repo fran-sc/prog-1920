@@ -5,7 +5,9 @@ public class ComandoOff extends Comando {
         super(dispositivo);
     }
 
+    @Override
     public void execute() { 
+        System.out.println("Desactivando el dispositivo " + this.getDispositivo() + "...");
         this.getDispositivo().off();
     }    
 }

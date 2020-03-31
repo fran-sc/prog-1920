@@ -10,23 +10,26 @@ public class Dispositivo {
         this.nombre = nombre;
     }
 
+    public boolean getEstado() { return this.estado; }
+
     public void on() {
-        if(!this.estado) {
-            System.out.println("Activando " + this.nombre + " (relé: " + this.releId + ")");
-            estado = true;
-        }
+        if(!this.estado)
+            System.out.println("El dispositivo " + this + " ha sido activado");
         else
-            System.out.println("El dispositivo " + this.nombre + " (relé: " + this.releId + ") ya estaba activado");
+            System.out.println("El dispositivo " + this + " ya estaba activado");
+
+        estado = true;        
     }
 
     public void off() {
-        if(this.estado) {
-            System.out.println("Desactivando " + this.nombre + " (relé: " + this.releId + ")");
-            estado = false;
-        }
+        if(this.estado)             
+            System.out.println("El dispositivo " + this + " ha sido desactivado");
         else
-            System.out.println("El dispositivo " + this.nombre + " (relé: " + this.releId + ") ya estaba desactivado");        
+            System.out.println("El dispositivo " + this + " ya estaba desactivado");
+
+        estado = false;        
     } 
     
+    @Override
     public String toString() { return "[" + this.releId + ": " + this.nombre + "]"; }
 }
