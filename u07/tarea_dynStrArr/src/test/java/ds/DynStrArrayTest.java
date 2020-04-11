@@ -79,8 +79,9 @@ public class DynStrArrayTest {
         String[] testset_cpy = {"cero", "uno", "dos"};
 
         DynStrArray dynArr = new DynStrArray(testset);  // Creamos el array dinámico con los datos de prueba
-        
-        testset = null; // Borramos el array con los datos de prueba
+
+        // Borramos los datos del array de prueba
+        for(int i=0; i<testset.length; i++) testset[i] = null;
 
         assertEquals(dynArr.size(), 3);             // Comprobamos ocupación =3
         assertFalse(dynArr.isEmpty());              // Comprobamos vacío =false
@@ -95,7 +96,8 @@ public class DynStrArrayTest {
 
         DynStrArray dynArr1 = new DynStrArray(testset); // Creamos el array dinámico con los datos de prueba
 
-        testset = null; // Borramos el array con los datos de prueba
+        // Borramos los datos del array de prueba
+        for(int i=0; i<testset.length; i++) testset[i] = null;
 
         DynStrArray dynArr2 = new DynStrArray(dynArr1); // Creamos el 2do. array dinámico a partir del 1ro.
         
@@ -112,7 +114,8 @@ public class DynStrArrayTest {
 
         DynStrArray dynArr = new DynStrArray(testset);  // Creamos el array dinámico con los datos de prueba
 
-        testset = null; // Borramos el array con los datos de prueba
+        // Borramos los datos del array de prueba
+        for(int i=0; i<testset.length; i++) testset[i] = null;
 
         assertEquals(dynArr.size(), 3);             // Comprobamos ocupación =3
         assertFalse(dynArr.isEmpty());              // Comprobamos vacío =false
@@ -185,7 +188,8 @@ public class DynStrArrayTest {
 
         DynStrArray dynArr = new DynStrArray(testset);  // Creamos el array dinámico con los datos de prueba
 
-        testset = null; // Borramos el array con los datos de prueba
+        // Borramos los datos del array de prueba
+        for(int i=0; i<testset.length; i++) testset[i] = null;
 
         dynArr.set(1, "1");                         // Modificamos con un dato de prueba
 
@@ -209,7 +213,8 @@ public class DynStrArrayTest {
 
         DynStrArray dynArr = new DynStrArray(testset);  // Creamos el array dinámico con los datos de prueba
 
-        testset = null; // Borramos el array con los datos de prueba
+        // Borramos los datos del array de prueba
+        for(int i=0; i<testset.length; i++) testset[i] = null;
 
         String value = dynArr.remove(1);            // Eliminamos el dato de la posición 1
 
@@ -237,7 +242,8 @@ public class DynStrArrayTest {
 
         DynStrArray dynArr = new DynStrArray(testset);  // Creamos el array dinámico con los datos de prueba
 
-        testset = null; // Borramos el array con los datos de prueba
+        // Borramos los datos del array de prueba
+        for(int i=0; i<testset.length; i++) testset[i] = null;
 
         boolean deleted = dynArr.delete("uno");     // Eliminamos el dato "uno"
 
@@ -263,7 +269,8 @@ public class DynStrArrayTest {
 
         DynStrArray dynArr = new DynStrArray(testset);  // Creamos el array dinámico con los datos de prueba
 
-        testset = null; // Borramos el array con los datos de prueba
+        // Borramos los datos del array de prueba
+        for(int i=0; i<testset.length; i++) testset[i] = null;
 
         int index = dynArr.indexOf("uno");          // Buscamos el dato "uno"
         assertEquals(index, 1);                     // Comprobamos la posición devuelta =1
@@ -282,19 +289,20 @@ public class DynStrArrayTest {
     @Test
     public void test_toString() {
         String[] testset = {"cero", "uno", "dos"};  
-        String testset_prt = "[ cero, uno, dos ]";
+        String testset_prt = "[cero, uno, dos]";
 
         DynStrArray dynArr = new DynStrArray(testset);  // Creamos el array dinámico con los datos de prueba
 
-        testset = null;                                 // Borramos el array con los datos de prueba
+        // Borramos los datos del array de prueba
+        for(int i=0; i<testset.length; i++) testset[i] = null;
 
-        assertEquals(dynArr.toString(), testset_prt);   // Comprobamos el valor devuelto por el método toString()
+        assertEquals(testset_prt, dynArr.toString());   // Comprobamos el valor devuelto por el método toString()
     }       
 
     // Test 20: toString() con múltiples operaciones
     @Test
     public void test_toString_multiple() {
-        String testset_prt = "[ uno, dos, tres, cuatro ]";
+        String testset_prt = "[uno, dos, tres, cuatro]";
 
         DynStrArray dynArr = new DynStrArray();         // Creamos el array dinámico
 
@@ -306,7 +314,7 @@ public class DynStrArrayTest {
         dynArr.set(1, "tres");
         dynArr.add(1, "dos");
 
-        assertEquals(dynArr.toString(), testset_prt);   // Comprobamos el valor devuelto por el método toString()
+        assertEquals(testset_prt, dynArr.toString());   // Comprobamos el valor devuelto por el método toString()
     }           
 
     //-----------------------------------------------------------------------------------------------

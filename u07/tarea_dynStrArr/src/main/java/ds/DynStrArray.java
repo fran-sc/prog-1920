@@ -24,7 +24,7 @@ public class DynStrArray {
     public DynStrArray(int capacity) {
         if(capacity<0) throw new IllegalArgumentException("Tamaño no válido: " + capacity);
 
-        this.len = 0;
+        this.len = 0;                       
         this.data = new String[capacity];
     }
 
@@ -54,11 +54,10 @@ public class DynStrArray {
     public DynStrArray(DynStrArray dynArr) {
         if(dynArr == null) throw new IllegalArgumentException("Argumento DynStrArray: null");
         
-        this.len = dynArr.size();
-        this.data = new String[this.len];
+        this.len = dynArr.len;
         
         // Copiamos los datos
-        for(int i=0; i<this.len; i++) this.data[i] = dynArr.get(i);
+        this.data = Arrays.copyOf(dynArr.data, dynArr.len);      
     }
 
     /**
@@ -110,8 +109,8 @@ public class DynStrArray {
     public void add(int index, String cadena) { 
         if(index<0 || index>this.len) throw new IndexOutOfBoundsException("Índice fuera de rango: " + index);
 
-        // Si el array está lleno, incrementamos el espacio
-        if(this.len == this.data.length) this.resize();
+        // Si el array está lleno, incrementamos el espacio un 50%
+        if(this.len == this.data.length) this.data = Arrays.copyOf(this.data, (int)(len*1.5));
 
         // desplazamos los elementos desde index para abrir "hueco" e insertar el nuevo elemento
         for (int i=len; i>index; i--) this.data[i] = this.data[i-1];
@@ -187,19 +186,10 @@ public class DynStrArray {
 
     @Override
     public String toString() {
-        String ret = "[ ";
+        String ret = "[";
 
         for(int i=0; i<this.len; i++) ret += (i>0?", ":"") + data[i];
 
-        return ret + " ]";
-    }
-
-    // Redimensiona el array un 50% más
-    private void resize() {
-        String[] temp = new String[(int)(len*1.5)];           // nuevo array
-
-        for(int i=0; i<len; i++) temp[i] = this.data[i];    // copiamos los datos
-
-        this.data = temp;                                   // swap;
+        return ret + "]";
     }
 }
