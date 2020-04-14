@@ -22,7 +22,7 @@ public class DynStrArray {
      * @param capacity capacidad inicial del array
      */
     public DynStrArray(int capacity) {
-        if(capacity<0) throw new IllegalArgumentException("Tamaño no válido: " + capacity);
+        if(capacity<=0) throw new IllegalArgumentException("Tamaño no válido: " + capacity);
 
         this.len = 0;                       
         this.data = new String[capacity];
@@ -110,7 +110,7 @@ public class DynStrArray {
         if(index<0 || index>this.len) throw new IndexOutOfBoundsException("Índice fuera de rango: " + index);
 
         // Si el array está lleno, incrementamos el espacio un 50%
-        if(this.len == this.data.length) this.data = Arrays.copyOf(this.data, (int)(len*1.5));
+        if(this.len == this.data.length) this.data = Arrays.copyOf(this.data, (int)(len*1.5 + 1));
 
         // desplazamos los elementos desde index para abrir "hueco" e insertar el nuevo elemento
         for (int i=len; i>index; i--) this.data[i] = this.data[i-1];
