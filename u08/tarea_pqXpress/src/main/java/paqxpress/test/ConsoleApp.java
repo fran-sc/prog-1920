@@ -73,7 +73,7 @@ public class ConsoleApp {
             System.out.printf("\t# %35s #%n", "");
             System.out.printf("\t# %-35s #%n", "[1] - Alta cliente");
             System.out.printf("\t# %-35s #%n", "[2] - Lista clientes");
-            System.out.printf("\t# %-35s #%n", "[3] - Nuevo envío");
+            System.out.printf("\t# %-35s #%n", "[3] - Alta nuevo envío");
             System.out.printf("\t# %-35s #%n", "[4] - Consultar estado envío");
             System.out.printf("\t# %-35s #%n", "[5] - Cambiar estado envío");
             System.out.printf("\t# %-35s #%n", "[6] - Listar envíos por cliente");
@@ -150,7 +150,7 @@ public class ConsoleApp {
      *********************************************************************************************/
     private static void opcNuevoEnvio(PqxManager manager) {
         Scanner cin = new Scanner(System.in);
-        String id = "", destino = "";
+        String id = "", destino = "", destinatario = "";
 
         while(true) {
             clearScreen();
@@ -163,10 +163,13 @@ public class ConsoleApp {
             else break;
         }
         
-        System.out.print("Destino: ");
-        destino = cin.nextLine().trim();
+        System.out.print("Destinatario: ");
+        destinatario = cin.nextLine().trim();
 
-        if(id.length()==0 || destino.length()==0) {
+        System.out.print("Destino: ");
+        destino = cin.nextLine().trim();        
+
+        if(id.length()==0 || destinatario.length() == 0 || destino.length()==0) {
             System.out.println("\nDatos no válidos");
             waitReturn();
         }
@@ -180,7 +183,7 @@ public class ConsoleApp {
                 System.out.println("\n[C]onfirmar | []-Cancelar");
 
                 if(cin.nextLine().trim().toUpperCase().equals("C")) {
-                    int pqId = manager.altaEnvio(c, destino);
+                    int pqId = manager.altaEnvio(c, destinatario, destino);
 
                     clearScreen();
 

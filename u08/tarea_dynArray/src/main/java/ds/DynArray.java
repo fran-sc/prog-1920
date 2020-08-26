@@ -178,8 +178,8 @@ public class DynArray<T> implements Iterable<T> {
     /**
      * Devuelve la posición de la primera ocurrencia del elemento en el array.
      * 
-     * @param obj cadena de caracteres que se quiere buscar
-     * @return posición en el array de la cadena buscada o -1 si no se encuentra
+     * @param obj objeto que se quiere buscar
+     * @return posición en el array del objeto buscado o -1 si no se encuentra
      */    
     public int indexOf(T obj) {
         int index = -1;
@@ -202,7 +202,7 @@ public class DynArray<T> implements Iterable<T> {
 
     @Override
     public Iterator<T> iterator() { 
-        return new Iterator() {
+        return new Iterator<T>() {
             private int p = 0;
     
             @Override    

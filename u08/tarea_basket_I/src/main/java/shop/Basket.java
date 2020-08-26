@@ -1,6 +1,7 @@
 package shop;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Arrays;
 import ds.DynArray;
 
@@ -14,6 +15,8 @@ public class Basket {
     public boolean isEmpty() { return entryList.isEmpty(); }
 
     public int getNumEntries() { return entryList.size(); }
+
+    public DynArray<BasketEntry> getEntryList() { return this.entryList; }
 
     public void clear() { this.entryList.clear(); }
 
@@ -35,7 +38,7 @@ public class Basket {
         return null;
     }
 
-    public void sub(Product p, int items) {
+    public void sub(Product p, int items) throws ProductNotInBasketException {
         BasketEntry entry =  this.find(p);
         
         if(entry != null) {
@@ -44,6 +47,18 @@ public class Basket {
             if(entry.sub(items) == 0)
                 this.entryList.remove(this.entryList.indexOf(entry));
         }
+        else 
+        throw new ProductNotInBasketException("El producto no se encuentra en el carrito: " + p.getRef());
+    }
+
+    public void remove(Product p) throws ProductNotInBasketException {
+        BasketEntry entry =  this.find(p);
+        
+        if(entry != null) {
+            this.entryList.remove(this.entryList.indexOf(entry));
+        }
+        else 
+            throw new ProductNotInBasketException("El producto no se encuentra en el carrito: " + p.getRef());
     }
 
     public BigDecimal[] getTotal() {
@@ -55,6 +70,10 @@ public class Basket {
             total[1] = total[1].add(entryTotal[1]);
         }
 
+        // redondeamos a 2 decimales
+        total[0] = total[0].setScale(2, RoundingMode.HALF_EVEN);
+        total[1] = total[1].setScale(2, RoundingMode.HALF_EVEN);
+
         return total;
     }
 
@@ -62,7 +81,10 @@ public class Basket {
     public String toString() {
         String s = "";
 
-        for(BasketEntry entry: this.entryList) s += entry + "\n";
+        int n = 0;
+        for(BasketEntry entry: this.entryList) s += ++n + ":" + entry + "\n";
+
+        s += "#:" + Arrays.toString(this.getTotal());
 
         return s;
     }
@@ -78,7 +100,26 @@ public class Basket {
         cesta.add(p3, 2);
         cesta.add(p1, 2);
 
-        System.out.println("CESTA:\n" + cesta);
-        System.out.println("IMPORTE: " + Arrays.toString(cesta.getTotal()));
+        System.out.println("CESTA:");
+        System.out.println(cesta);
+
+        try {
+            cesta.sub(p1, 2);
+            cesta.sub(new Product("RF1","XX","XX","XX"), 1);
+        }
+        catch(ProductNotInBasketException e) {
+            System.out.println(e);
+        }
+        
+        try {
+            cesta.remove(p3);
+            cesta.remove(new Product("RF2","XX","XX","XX"));
+        }
+        catch(ProductNotInBasketException e) {
+            System.out.println(e);
+        }        
+
+        System.out.println("CESTA:");
+        System.out.println(cesta);        
     }
 }
