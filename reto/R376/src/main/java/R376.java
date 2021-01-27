@@ -1,3 +1,7 @@
+/*
+ * R376.  Siete picos.
+ * */
+
 import java.util.Scanner;
 
 public class R376 {

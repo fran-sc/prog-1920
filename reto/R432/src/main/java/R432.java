@@ -1,3 +1,7 @@
+/**
+ * R432. Escapando de las fuerzas imperiales.
+ */
+
 import java.util.Scanner;
 
 public class R432 {
