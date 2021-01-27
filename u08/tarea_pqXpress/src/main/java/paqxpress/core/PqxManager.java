@@ -28,8 +28,8 @@ public class PqxManager {
 
     public Paquete getPaquete(int id) { return paquetes.get(id); }
 
-    public int altaEnvio(Cliente c, String destino) {
-        Paquete pq = new Paquete(c, destino);
+    public int altaEnvio(Cliente c, String destinatario, String destino) {
+        Paquete pq = new Paquete(c, destinatario, destino);
         
         int id = pq.getId();
         paquetes.put(id, pq);

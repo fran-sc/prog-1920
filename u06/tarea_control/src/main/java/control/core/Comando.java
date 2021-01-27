@@ -9,5 +9,6 @@ public abstract class Comando implements IComm {
 
     public Dispositivo getDispositivo() { return this.dispositivo; }
 
-    public abstract void execute();
+    // No hace falta añadir el método execute() del interfaz. Si se hace, debe ser abstracto
+    //public abstract void execute();
 }

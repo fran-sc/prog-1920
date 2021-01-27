@@ -7,13 +7,15 @@ public class Paquete {
     private final int id;
     private final Cliente cliente;
     private EstadoPq estado;
+    private String destinatario;
     private String destino;
     private final LocalDateTime timestamp;
 
-    public Paquete(Cliente cliente, String destino) {
+    public Paquete(Cliente cliente, String destinatario, String destino) {
         this.id = ++Paquete._id;
         this.cliente = cliente;
         this.estado = new EstadoOrdenado();
+        this.destinatario = destinatario;
         this.destino = destino;
         this.timestamp = LocalDateTime.now();
     }
@@ -25,6 +27,8 @@ public class Paquete {
     public LocalDateTime getTimestamp() { return this.timestamp; }
 
     public String getDestino() { return this.destino; }
+    
+    public String getDestinatario() { return this.destino; }
 
     public EstadoPq getEstado() { return this.estado; }
     public void setEstado(EstadoPq estado) { this.estado = estado; }

@@ -8,7 +8,6 @@ import java.util.Arrays;
  * Versión con Doble Buffer
  */
 public class LifeGameDB {
-    private boolean[][][] buffer = new boolean[2][][];
     private boolean[][] currentBuffer;
     private boolean[][] nextBuffer;
     private int rows;
@@ -21,7 +20,9 @@ public class LifeGameDB {
     public int getNcells() { return this.ncells; }
 
     public LifeGameDB(int rows, int cols, int ncells) { initLife(rows, cols, ncells, new Random()); }
+    
     public LifeGameDB(int rows, int cols, int ncells, long seed) { initLife(rows, cols, ncells, new Random(seed)); }
+    
     public LifeGameDB(int[][] data) {
         // Inicializa los buffers
         initBuffers(data.length, data[0].length);
@@ -46,10 +47,8 @@ public class LifeGameDB {
         this.cols = cols;
         
         // Crea los dos buffers e inicializa los punteros
-        this.buffer[0] = new boolean[this.rows][this.cols];
-        this.buffer[1] = new boolean[this.rows][this.cols];
-        this.currentBuffer = buffer[0];
-        this.nextBuffer = buffer[1];
+        this.currentBuffer = new boolean[this.rows][this.cols];
+        this.nextBuffer = new boolean[this.rows][this.cols];
     }
 
     /**
@@ -170,50 +169,4 @@ public class LifeGameDB {
         }
         return alive;
     }    
-
-    public static void main(String[] args) {
-        LifeGameDB life = new LifeGameDB(4, 5, 8, 1);
-
-        System.out.println("\nGen: " + life.getGen());
-        System.out.println("C.Vivas: " + life.getNcells());
-        life.printMatrix('X', '.');
-        
-        life.evolve(3);
-        System.out.println("\nGen: " + life.getGen());
-        System.out.println("C.Vivas: " + life.getNcells());
-        life.printMatrix('X', '.');
-        
-        for(int[] a: life.getMatrix())
-            Arrays.toString(a);
-
-        /*
-        LifeGame life2 = new LifeGame(new int[][]{ 
-            {0,1,0,0,0,0,0},
-            {0,0,1,0,1,1,0},
-            {0,0,0,0,0,0,1},
-            {0,1,0,0,1,0,1},
-            {0,1,0,0,0,0,0},
-            {0,0,0,0,1,0,1},
-            {1,0,0,1,1,0,0}
-        });
-
-        System.out.println("\nGen: " + life2.getGen());
-        System.out.println("Vivas: " + life2.getNcells());
-        life2.printMatrix('X', '.');
-
-        life2.evolve(0);
-        System.out.println("\nGen: " + life2.getGen());
-        System.out.println("Vivas: " + life2.getNcells());
-        life2.printMatrix('X', '.');     
-        
-        int[][] testData = { {0,0,0,0,1},
-                             {1,1,1,1,0},
-                             {0,0,0,1,1},        
-                             {0,0,0,1,0}};
-        life = new LifeGame(testData);
-        life.printMatrix('X', '.');
-        life.evolve(3);
-        life.printMatrix('X', '.');        
-        */
-    }
 }

@@ -49,21 +49,16 @@ public class LifeGameTest {
 
     @Test 
     public void test_LifeGame_WithSeed() {
-        int[][] testData = { {0,0,0,0,0},
-                             {1,1,1,0,0},
-                             {0,0,0,1,1},        
-                             {0,0,0,1,1}};
-
-        LifeGame life = new LifeGame(4, 5, 8, 1);
-        life.evolve(3);
-        assertTrue(compareArray(life.getMatrix(), testData));
+        LifeGame life1 = new LifeGame(4, 5, 8, 1);
+        LifeGame life2 = new LifeGame(4, 5, 8, 1);
+        assertTrue(compareArray(life1.getMatrix(), life2.getMatrix()));
     }   
 
     @Test 
     public void test_LifeGame_NoSeed() {
         final int NCELLS = 8;
         LifeGame life = new LifeGame(4, 5, NCELLS);
-        assertEquals(NCELLS, life.getNcells());
+        assertEquals(NCELLS, countAlive(life.getMatrix()));
     }  
 
     @Test 
@@ -105,5 +100,14 @@ public class LifeGameTest {
                 if(a1[i][j] != a2[i][j]) return false;
         return true;
     }
+    
+    private int countAlive(int[][] a) {
+        int cont = 0;
+        for (int[] fila : a) 
+            for (int cell: fila) 
+                if (cell == 1) cont++;
+
+        return cont;
+    }    
 
 }
