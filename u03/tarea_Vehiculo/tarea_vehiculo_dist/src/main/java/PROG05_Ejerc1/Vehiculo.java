@@ -30,7 +30,7 @@ public class Vehiculo {
      * @param nomPropietario nombre del propietario.
      * @param dniPropietario DNI del propietario.
      */
-    Vehiculo(String marca, String matricula, int numKM, LocalDate fechMatricula, String descripcion,
+    public Vehiculo(String marca, String matricula, int numKM, LocalDate fechMatricula, String descripcion,
         double precio, String nomPropietario, String dniPropietario) {
         this.marca = marca;
         this.matricula = matricula;
