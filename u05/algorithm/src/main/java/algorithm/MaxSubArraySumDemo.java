@@ -3,6 +3,14 @@ package algorithm;
 import java.util.Random;
 import java.util.Scanner;
 
+/** 
+ * MaxSubArraySum Demo.
+ *
+ * @version 0.2
+ * @apiNote En 0.2 se cambia el código de craación de arrays aleatorios e
+ *          impresión por llamadas a los métodos createRandomArray y toString
+ *          de {@link algorithm.ArrayUtil}
+ * */
 public class MaxSubArraySumDemo {
     /* Opciones del menú principal. */
     private static final int OPC_NUEVO = 1;
@@ -145,9 +153,12 @@ public class MaxSubArraySumDemo {
             System.out.print("Máximo: ");
             int max = Integer.parseInt(cin.nextLine());
 
+            ar = ArrayUtil.createRandomArray(n, min, max);
+            /* v0.2 
             Random r = new Random();
 
             for (int i = 0; i < n; i++) ar[i] = r.nextInt(max - min + 1) + min;
+            */
         }
         return ar;
     }
@@ -158,9 +169,12 @@ public class MaxSubArraySumDemo {
 
         int n = Math.min(20, ar.length);
 
+        System.out.println("[len: " + ar.length + "] " + ArrayUtil.toString(ar, 20));
+        /* v0.2
         System.out.print("[len: " + ar.length + "] [");
         for (int i = 0; i < n; i++) System.out.print(ar[i] + ", ");
         System.out.println((ar.length > n) ? "...]" : "\b\b]");
+        */
     }
 
     /* Ejecuta el la implementación del algoritmo 1 */
