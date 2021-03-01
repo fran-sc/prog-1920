@@ -7,7 +7,7 @@ PROJ_NAME = $(shell basename $(CURDIR))
 MAIN = c4.ConsoleApp
 
 # Packages 
-PACKAGES = c4
+PACKAGES = c4 c4.tree
 
 # Libraries
 LIB_CP = 
@@ -36,7 +36,7 @@ TEST_CLASS =
 TEST_RUNNER = org.junit.runner.JUnitCore
 
 # Packages 
-TEST_PACKAGES = c4
+TEST_PACKAGES = c4 c4.tree
 
 # Libraries
 JUNIT4_CP = /home/zeroth/work/lib/java/junit-4.13.1.jar:/home/zeroth/work/lib/java/hamcrest-core-1.3.jar

@@ -6,6 +6,7 @@ import java.util.Arrays;
  * Controlador del juego Conecta 4.
  * */
 public class Connect4 {
+    public static final char[] MARKS = {'X', 'O'};
     public static final int NCOLS = 7;
     public static final int NROWS = 6;
 
@@ -66,8 +67,8 @@ public class Connect4 {
      *
      * @param id 1 ó 2
      * */
-    public void runOnce(int num) {
-        Player p = this.players[--num];
+    public void runOnce(int id) {
+        Player p = this.players[--id];
 
         // realiza el movimiento que indique jugador
         this.move(p, p.nextMove(this.board));
@@ -79,6 +80,24 @@ public class Connect4 {
         else
             // check si fin movimientos
             this.done = this.nMoves == NROWS * NCOLS;
+    }
+
+    @Override
+    public String toString() {
+        String out = "";
+
+        for (int[] row : board) {
+            out += "\t|";
+            for (int cell : row) out += ((cell == 0 ? " " : MARKS[cell - 1]) + "|");
+            out += "\n";
+        }
+
+        out += "\t";
+        for (int i = 0; i < board[0].length; i++) out += " -";
+        out += "\n\t";
+        for (int i = 0; i < board[0].length; i++) out += " " + i;
+
+        return out;
     }
 
     private boolean checkWin(Player p) {

@@ -21,7 +21,7 @@ public class ConsoleHumanPlayer extends Player {
         int col = -1;
         while(true) {
             System.out.print("\n> Columna [0-6]: ");
-            col = cin.nextInt();
+            col = Integer.parseInt(cin.nextLine());
             if(col<0 || col>7 || board[0][col]!=0) 
                 System.out.println("\nColumna no válida");
             else

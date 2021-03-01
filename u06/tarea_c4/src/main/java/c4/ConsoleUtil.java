@@ -30,4 +30,18 @@ public class ConsoleUtil {
                 }
         }
     }
+
+    /* Coloriza la cadena de texto (sólo UX). */
+    public static String rainbownize(int sys, String s) {
+        if(sys != SYS_NIX)
+            return s;
+
+        String s_col = "";
+        for(int i=0, c=0; i<s.length(); i++) {
+            c = c%6 + 1; // color in range [1-6]
+            s_col += "\033[38;5;" + c + "m" + s.charAt(i);
+        }
+
+        return s_col += "\033[38;5;7m";
+    }
 }
