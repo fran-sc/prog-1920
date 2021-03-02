@@ -26,5 +26,5 @@ public abstract class Player {
      * Devuelve la columna donde se colocará la nueva pieza.
      * Debe validar que dicha posición es válida
      * */
-    public abstract int nextMove(int[][] board);
+    public abstract int nextMove(Board board);
 }

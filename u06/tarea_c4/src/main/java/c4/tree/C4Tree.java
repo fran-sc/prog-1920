@@ -1,5 +1,7 @@
 package c4.tree;
 
+import c4.Board;
+
 public class C4Tree {
     private TNode root;
 
@@ -7,8 +9,8 @@ public class C4Tree {
         return this.root;
     }
 
-    public C4Tree(int[][] board, int depth, int id) {
-        this.root = new TNode(new TBoard(board), null);
+    public C4Tree(Board board, int depth, int id) {
+        this.root = new TNode(board, null);
         createChildren(this.root, depth, id);
     }
 
@@ -19,28 +21,19 @@ public class C4Tree {
 
     private void createChildren(TNode parent, int depth, int id) {
         // Check if it is a final position
-        TBoard tb = parent.getElement();
-        if (tb.countWindows(4, id) > 0 || tb.countWindows(4, id % 2 + 1) > 0)
+        Board pboard = parent.getElement();
+        if (pboard.countWindows(4, 4, id) > 0 || pboard.countWindows(4, 4, id % 2 + 1) > 0)
             return;
 
         // create childs from current position (one per column)
-        // parent board
-        int[][] pboard = tb.getBoard();
-
         // iterate over parent columns
-        for (int n = 0; n < pboard[0].length; n++) {
+        for (int n = 0; n < pboard.getCols(); n++) {
             // clone parent
-            int[][] cboard = new int[pboard.length][];
-            for (int i = 0; i < pboard.length; i++) cboard[i] = pboard[i].clone();
+            Board cboard = pboard.clone();
 
-            // add child to parent if a move is possible
-            if (cboard[0][n] == 0) {
-                // add move in the selected column
-                addBoardMove(cboard, n, id);
-
-                // add new child object to parent
-                parent.addChildren(n, new TNode(new TBoard(cboard), parent));
-            }
+            // add child to parent if a move in the column is possible
+            if (cboard.move(id, n))
+                parent.addChildren(n, new TNode(cboard, parent));
         }
 
         // add children of the next level
@@ -52,16 +45,10 @@ public class C4Tree {
         }
     }
 
-    private void addBoardMove(int[][] board, int col, int id) {
-        int row = 0;
-        while (row < board.length && board[row][col] == 0) ++row;
-        board[row - 1][col] = id;
-    }
-
     public MinimaxValue minimax(TNode node, int id, int col, int depth, boolean maximizing) {
         // if we reach the bottom of the tree, return the position's heuristic value
         if (depth == 0 || node.isLeaf()) {
-            return new MinimaxValue(col, node.getElement().getHeuristic(id));
+            return new MinimaxValue(col, node.getHeuristic(id));
         }
 
         MinimaxValue minimax_ret = new MinimaxValue();

@@ -16,13 +16,15 @@ public class SmartBotPlayer extends Player {
     }
 
     @Override
-    public int nextMove(int[][] board) {
+    public int nextMove(Board board) {
+        int[][] b = board.getBoardArray();
+
         TreeMap<Integer, Integer> scores = new TreeMap<>();
 
         // Calcula las puntuaciones de cada movimiento
-        for (int col = 0; col < board[0].length; col++)
-            if (board[0][col] == 0)
-                scores.put(col, getScore(col, board));
+        for (int col = 0; col < b[0].length; col++)
+            if (b[0][col] == 0)
+                scores.put(col, getScore(col, b));
 
         // Devuelve la columna con la puntuación máxima
         Set<Integer> keys = scores.keySet();

@@ -12,11 +12,12 @@ public class LeftBotPlayer extends Player {
 
     /** Busca una columna de forma aleatoria entre las válidas. */
     @Override
-    public int nextMove(int[][] board) {
+    public int nextMove(Board board) {
+        int[][] b = board.getBoardArray();
         int col = 0;
         // Busca la primera columna válida desde la izquierda
-        for (int i = 0; i < board[0].length; i++)
-            if (board[0][i] == 0) {
+        for (int i = 0; i < board.getCols(); i++)
+            if (b[0][i] == 0) {
                 col = i;
                 break;
             }

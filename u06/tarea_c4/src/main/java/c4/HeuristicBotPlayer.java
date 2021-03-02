@@ -23,11 +23,11 @@ public class HeuristicBotPlayer extends Player {
 
     /** Busca una columna de forma aleatoria entre las válidas. */
     @Override
-    public int nextMove(int[][] board) { 
+    public int nextMove(Board board) { 
         if(first_move) {
             // mueve a la columna central
             first_move = false;
-            return board[0].length/2;
+            return board.getCols()/2;
         }
 
         // Crea un árbol de jugadas de profundidad TREE_DEPTH a partir de la 

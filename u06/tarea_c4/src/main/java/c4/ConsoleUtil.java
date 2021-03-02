@@ -37,9 +37,9 @@ public class ConsoleUtil {
             return s;
 
         String s_col = "";
-        for(int i=0, c=0; i<s.length(); i++) {
-            c = c%6 + 1; // color in range [1-6]
-            s_col += "\033[38;5;" + c + "m" + s.charAt(i);
+        for(int i=0, c=7; i<s.length(); i++, c++) {
+            //s_col += "\033[38;5;" + c + "m" + s.charAt(i);
+            s_col += "\033[38;5;" + (c%11 + 2) + "m" + s.charAt(i);
         }
 
         return s_col += "\033[38;5;7m";
