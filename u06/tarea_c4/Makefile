@@ -28,7 +28,8 @@ JAR_PATH = target/dist/
 
 #---------------------------------------------------------------------------------------------------------
 # Documentation
-DOC_PATH = docs/
+DOC_PATH = doc/
+JDOC_PATH = jdoc/
 
 #---------------------------------------------------------------------------------------------------------
 # Tests
@@ -84,13 +85,13 @@ test: test-classes
 	$(JVM) -cp $(TEST_CP) $(TEST_RUNNER) $(TEST_CLASS)
 
 jdocs:
-	$(JDOC) --frames -d $(DOC_PATH) -sourcepath $(SPATH) $(PACKAGES)
+	$(JDOC) --frames -d $(JDOC_PATH) -sourcepath $(SPATH) $(PACKAGES)
 
 clean: 
 	$(RM) -r $(DPATH)*
 	$(RM) -r $(TEST_DPATH)*
 	$(RM) -r $(JAR_PATH)*
-	$(RM) -r $(DOC_PATH)*
+	$(RM) -r $(JDOC_PATH)*
 
 init:
 	#$(RM) -r *  # Dangerous!!!
